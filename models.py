@@ -24,3 +24,29 @@ def put_price(S,K,T,r,sigma):
 
     put_price_value = K*math.exp(-r*T)*norm.cdf(d2_value) - S*(norm.cdf(d1_value))
     return put_price_value
+
+def call_delta(S,K,T,r,sigma):
+    call_price_value = call_price(S,K,T,r,sigma)
+    delta_call =norm.cdf(call_price_value)
+    return delta_call
+
+
+def put_delta(S,K,T,r,sigma):
+    put_price_value = put_price(S, K, T, r, sigma)
+    delta_put = norm.cdf(put_price_value)
+    return delta_put
+
+
+def gamma(S,K,T,r,sigma):
+    d1_value = d1(S,K,T,r,sigma)
+
+    gamma_value = math.exp(((-(d1_value)**2))/2)/(sigma*math.sqrt(2*math.pi))
+    return gamma_value
+
+
+def vega(S,K,T,r,sigma):
+    d1_value = d1(S,K,T,r,sigma)
+    N_of_d1 = math.exp((((-(d1_value)**2))/2))/math.sqrt(2*math.pi)
+
+    vega_value = S*math.sqrt(T)*N_of_d1
+    return vega_value
