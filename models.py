@@ -26,21 +26,21 @@ def put_price(S,K,T,r,sigma):
     return put_price_value
 
 def call_delta(S,K,T,r,sigma):
-    call_price_value = call_price(S,K,T,r,sigma)
-    delta_call =norm.cdf(call_price_value)
+    d1_value = d1(S,K,T,r,sigma)
+    delta_call = norm.cdf(d1_value)
     return delta_call
 
 
 def put_delta(S,K,T,r,sigma):
-    put_price_value = put_price(S, K, T, r, sigma)
-    delta_put = norm.cdf(put_price_value)
+    d1_value = d1(S, K, T, r, sigma)
+    delta_put = norm.cdf(d1_value) - 1
     return delta_put
 
 
 def gamma(S,K,T,r,sigma):
     d1_value = d1(S,K,T,r,sigma)
 
-    gamma_value = math.exp(((-(d1_value)**2))/2)/(sigma*math.sqrt(2*math.pi))
+    gamma_value = math.exp(((-(d1_value)**2))/2)/(S*sigma*math.sqrt(2*math.pi))
     return gamma_value
 
 
