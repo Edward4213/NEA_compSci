@@ -1,11 +1,8 @@
-portfolio = {
-    "bitcoin": 5000,
-    "ethereum": 3000,
-    "solana": 2000
-}
 
-def total_value(portfolio):
-    return sum(portfolio.values())
+portfolio = {"bitcoin": 0.05, "ethereum": 1.2, "solana": 10}
+def portfolio_values(portfolio):
+    pass
+
 
 def portfolio_weights(portfolio):
     total = total_value(portfolio)
@@ -15,3 +12,6 @@ def portfolio_weights(portfolio):
         coin_weight = (portfolio[coin])/(total)
         weights[coin] = coin_weight
     return weights
+
+def total_value(portfolio):
+    return sum(portfolio.values())
