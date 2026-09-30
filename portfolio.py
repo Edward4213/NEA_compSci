@@ -1,4 +1,8 @@
-portfolio={}
+portfolio = {
+    "bitcoin": 5000,
+    "ethereum": 3000,
+    "solana": 2000
+}
 
 def total_value(portfolio):
     return sum(portfolio.values())
