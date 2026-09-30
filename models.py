@@ -17,13 +17,15 @@ def call_price(S,K,T,r,sigma):
     call_price_value = S*(norm.cdf(d1_value)) - K*math.exp(-r*T)*norm.cdf(d2_value)
     return call_price_value
 
+
 def put_price(S,K,T,r,sigma):
 
     d1_value = d1(S,K,T,r,sigma)
     d2_value = d2(S,K,T,r,sigma)
 
-    put_price_value = K*math.exp(-r*T)*norm.cdf(d2_value) - S*(norm.cdf(d1_value))
+    put_price_value = K*math.exp(-r*T)*norm.cdf(-d2_value) - S*(norm.cdf(-d1_value))
     return put_price_value
+
 
 def call_delta(S,K,T,r,sigma):
     d1_value = d1(S,K,T,r,sigma)
@@ -46,9 +48,9 @@ def gamma(S,K,T,r,sigma):
 
 def vega(S,K,T,r,sigma):
     d1_value = d1(S,K,T,r,sigma)
-    N_of_d1 = math.exp((((-(d1_value)**2))/2))/math.sqrt(2*math.pi)
+    phi_of_d1 = math.exp((((-(d1_value)**2))/2))/math.sqrt(2*math.pi)
 
-    vega_value = S*math.sqrt(T)*N_of_d1
+    vega_value = S*math.sqrt(T)*phi_of_d1
     return vega_value
 
 def call_theta(S,K,T,r,sigma):
