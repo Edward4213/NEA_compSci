@@ -7,7 +7,7 @@ T = 30 / 365
 r = 0.04
 sigma = 0.50
 
-print(f"The call price is {call_price(S, K, T, r, sigma)}")
-print(f"The put price is {put_price(S, K, T, r, sigma)}")
+print(f"The call price is {call_price(S, K, T, r, sigma):.2f}")
+print(f"The put price is {put_price(S, K, T, r, sigma):.2f}")
 print("Total:", total_value(portfolio))
 print("Weights:", portfolio_weights(portfolio))
